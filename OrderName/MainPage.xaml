@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OrderName.MainPage">
+
+    <StackLayout BackgroundColor="Black">
+        <Label Text="Hello, World!" TextColor="White" HorizontalOptions="Center" FontSize="25">
+        </Label>
+        <Button Text="Confirmar" Clicked="Button_Clicked" VerticalOptions="EndAndExpand"></Button>
+    </StackLayout>
+</ContentPage>
+    
+
+    
