@@ -4,9 +4,52 @@
              x:Class="OrderName.MainPage">
 
     <StackLayout BackgroundColor="Black">
-        <Label Text="Hello, World!" TextColor="White" HorizontalOptions="Center" FontSize="25">
+        <Label Text="Ola, mundo!" TextColor="White" HorizontalOptions="Center" FontSize="25">
+
         </Label>
-        <Button Text="Confirmar" Clicked="Button_Clicked" VerticalOptions="EndAndExpand"></Button>
+        <Entry  x:Name="TXTNome" Keyboard="Text" Background="white" VerticalOptions="CenterAndExpand" ReturnType="Go">
+        </Entry>
+        <Button  
+            Text="Confirmar" 
+            Clicked="Button_Clicked" 
+            HorizontalOptions="CenterAndExpand" 
+            CornerRadius="3"
+            BorderColor="Black">
+        </Button>
+        <Button  
+            x:Name="BTN_ROW"
+            Text="Ver Fila" 
+            Clicked="BTN_ROW_Clicked"
+            HorizontalOptions="CenterAndExpand" 
+            CornerRadius="3"
+            BorderColor="Black">
+        </Button>
+        <ImageButton
+            Source="Seta.png" Scale="0.5" 
+            BackgroundColor="LightGray" 
+            WidthRequest="500" 
+            HeightRequest="150" 
+            HorizontalOptions="CenterAndExpand">
+        </ImageButton>
+
+        <!--Pressed = evento de pressionar botão // Released = soltar botão-->
+        <Button 
+            x:Name="BTNEventTest" 
+            Text="Event"
+            Pressed="BTNEventTest_Pressed"
+            Released="BTNEventTest_Released"
+            HorizontalOptions="CenterAndExpand"
+            CornerRadius="3"
+            BorderColor="Black">
+            </Button>
+        <Label 
+            x:Name="LbEvent"
+            Text="-"
+            FontSize="Header"
+            TextColor="Green"
+            HorizontalOptions="CenterAndExpand">
+        </Label>
+               
     </StackLayout>
 </ContentPage>
     
