@@ -4,10 +4,17 @@
              x:Class="OrderName.MainPage">
 
     <StackLayout BackgroundColor="Black">
-        <Label Text="Ola, mundo!" TextColor="White" HorizontalOptions="Center" FontSize="25">
-
+        <Label Text="Ola, mundo!" 
+               TextColor="White" 
+               HorizontalOptions="Center" 
+               FontSize="25">
         </Label>
-        <Entry  x:Name="TXTNome" Keyboard="Text" Background="white" VerticalOptions="CenterAndExpand" ReturnType="Go">
+        <Entry  
+            x:Name="TXTNome" 
+            Keyboard="Text" 
+            Background="white" 
+            VerticalOptions="CenterAndExpand" 
+            ReturnType="Go">
         </Entry>
         <Button  
             Text="Confirmar" 
@@ -45,7 +52,7 @@
         <Label 
             x:Name="LbEvent"
             Text="-"
-            FontSize="Header"
+            FontSize="Medium"
             TextColor="Green"
             HorizontalOptions="CenterAndExpand">
         </Label>

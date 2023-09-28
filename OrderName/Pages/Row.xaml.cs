@@ -12,9 +12,15 @@ namespace OrderName.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Row : ContentPage
 	{
+
 		public Row ()
 		{
 			InitializeComponent ();
 		}
+
+		private void BTNBackButton(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new MainPage());
+	    }
 	}
 }
