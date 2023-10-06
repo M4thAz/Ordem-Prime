@@ -5,5 +5,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-	<color name="splash_background">#2d3030</color>
+	<color name="LoadingScreen">#FF4081</color>
 </resources>

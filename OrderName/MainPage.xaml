@@ -6,45 +6,48 @@
     <StackLayout BackgroundColor="Black">
         <Label Text="Ola, mundo!" 
                TextColor="White" 
-               HorizontalOptions="Center" 
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="EndAndExpand"
                FontSize="25">
         </Label>
+        <!--Caixa de texto para por o nome do usuário-->
         <Entry  
             x:Name="TXTNome" 
             Keyboard="Text" 
-            Background="white" 
+            Background="white"
             VerticalOptions="CenterAndExpand" 
             ReturnType="Go">
         </Entry>
+        <!--Botão que permite colocar o nome do user-->
         <Button  
             Text="Confirmar" 
             Clicked="Button_Clicked" 
-            HorizontalOptions="CenterAndExpand" 
-            CornerRadius="3"
-            BorderColor="Black">
+            HorizontalOptions="CenterAndExpand"
+            FontAttributes="Bold"
+            CornerRadius="3">
         </Button>
+        <!--Botão que permite o user e o funcionário ver a fila-->
         <Button  
             x:Name="BTN_ROW"
             Text="Ver Fila" 
             Clicked="BTN_ROW_Clicked"
-            HorizontalOptions="CenterAndExpand" 
-            CornerRadius="3"
-            BorderColor="Black">
+            HorizontalOptions="CenterAndExpand"
+            FontAttributes="Bold"
+            CornerRadius="3">
         </Button>
-        <ImageButton
-            Source="Seta.png" Scale="0.5" 
+        <!--<ImageButton
+            Source="seta.png" Scale="0.5"
             BackgroundColor="LightGray" 
             WidthRequest="500" 
             HeightRequest="150" 
             HorizontalOptions="CenterAndExpand">
-        </ImageButton>
+        </ImageButton>-->
 
         <!--Pressed = evento de pressionar botão // Released = soltar botão-->
         <Button 
             x:Name="BTNEventTest" 
             Text="Event"
-            Pressed="BTNEventTest_Pressed"
-            Released="BTNEventTest_Released"
+            Clicked="BTNEventTest_Pressed"
             HorizontalOptions="CenterAndExpand"
             CornerRadius="3"
             BorderColor="Black">

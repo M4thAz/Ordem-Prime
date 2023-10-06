@@ -3,15 +3,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
 <item>
-	<color android:color="@color/splash_background"/> 
+	<color android:color="@color/LoadingScreen"/> 
 </item>
 
-<item>
-	<bitmap>
-		android:src="@drawable/splash_logo"
+<item 
+	android:width="200dp"
+	android:height="200dp">
+	
+	<bitmap
+		android:src="@drawable/icon_screen"
 		android:tileMode="disabled"
-		android:gravity="center"
-	</bitmap>
-</item>	
+		android:gravity="center"/>
+</item>
+	
 
 </layer-list>

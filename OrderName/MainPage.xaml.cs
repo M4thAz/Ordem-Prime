@@ -11,6 +11,8 @@ namespace OrderName
 {
     public partial class MainPage : ContentPage
     {
+
+        ClassDB.DataBaseConnection conLink = new ClassDB.DataBaseConnection();
         public MainPage()
         {
             InitializeComponent();
@@ -18,7 +20,20 @@ namespace OrderName
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
+            //DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
+
+            try
+            {
+                ClassDB.DataBaseConnection.LinkDataBase();
+                conLink.ConectionOn();
+                LbEvent.Text = "conexão ok";
+            }
+            catch
+            {
+                LbEvent.Text = "conection of";
+            }
+                //BTNEventTest_Pressed();
+      
         }
 
         private void BTN_ROW_Clicked(object sender, EventArgs e)
@@ -29,14 +44,19 @@ namespace OrderName
 
         private void BTNEventTest_Pressed(object sender, EventArgs e)
         {
-            //puxa o evento da label passando um texto enquanto segura o botao
-            LbEvent.Text = "Holding!";
+            //LbEvent.Text = "Conexão ok";
         }
+
+        /*/private void BTNEventTest_Pressed(object sender, EventArgs e)
+        //{
+        //    //puxa o evento da label passando um texto enquanto segura o botao
+        //    LbEvent.Text = "Holding!";
+        //}
 
         private void BTNEventTest_Released(object sender, EventArgs e)
         {
             //puxa o evento da label quando o botão é solto
             LbEvent.Text = "Umpressed";
-        }
+        }*/
     }
 }
