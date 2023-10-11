@@ -1,4 +1,5 @@
-﻿using OrderName.Pages;
+﻿using OrderName.ClassDB;
+using OrderName.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,8 @@ namespace OrderName
     public partial class MainPage : ContentPage
     {
 
-        ClassDB.DataBaseConnection conLink = new ClassDB.DataBaseConnection();
+        ClassDB.DataBaseConnection conn = new ClassDB.DataBaseConnection();
+        ClassDB.NewDataBaseConnetion connectiontest  = new ClassDB.NewDataBaseConnetion();
         public MainPage()
         {
             InitializeComponent();
@@ -20,20 +22,27 @@ namespace OrderName
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            //DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
+
+            //try
+            //{
+            //    connectiontest.TestOnConection();
+            //}
+            //catch (Exception ex) {
+
+            //}
+            DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
 
             try
             {
                 ClassDB.DataBaseConnection.LinkDataBase();
-                conLink.ConectionOn();
+                conn.ConnectionOn();
                 LbEvent.Text = "conexão ok";
+                conn.ConectionOF();
             }
             catch
             {
                 LbEvent.Text = "conection of";
             }
-                //BTNEventTest_Pressed();
-      
         }
 
         private void BTN_ROW_Clicked(object sender, EventArgs e)

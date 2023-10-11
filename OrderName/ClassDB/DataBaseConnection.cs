@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Security.Cryptography;
 using System.Text;
 using MySql.Data.MySqlClient;
+using Xamarin.Essentials;
 using ZstdSharp.Unsafe;
 
 namespace OrderName.ClassDB
@@ -11,23 +13,38 @@ namespace OrderName.ClassDB
     {
         public static MySqlConnection ConectionDatabase = new MySqlConnection();
 
-        static string server = "127.0.0.1";
+        static string server = "localhost";
         static string nameLinkDb = "julianodb";
-        static string host = "root";
+        static string user = "root";
         static string password = "";
-
-
         public static MySqlConnection LinkDataBase()
         {
-            ConectionDatabase = new MySqlConnection($"server={server}; nameLinkDb={nameLinkDb}; host={host}; password={password}");
+            MySqlConnection ConectionDatabase = new MySqlConnection($"server={server}; database={nameLinkDb}; host={user}; password={password}");
             return ConectionDatabase;
 
         }
 
-        public void ConectionOn()
+        
+        public void ConnectionOn()
         {
-            LinkDataBase();
-            ConectionDatabase.Open();
+            try
+            {
+                LinkDataBase();
+                ConectionDatabase.Open();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            //finally
+            //{
+            //if (ConectionDatabase.State == System.Data.ConnectionState.Open)
+            //    {
+            //        ConectionDatabase.Close();
+            //    }
+            //}
         }
 
 
