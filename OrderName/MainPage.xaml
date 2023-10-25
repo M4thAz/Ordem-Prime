@@ -1,67 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OrderName.MainPage">
-
-    <StackLayout BackgroundColor="Black">
-        <Label Text="Ola, mundo!" 
-               TextColor="White" 
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="EndAndExpand"
-               FontSize="25">
-        </Label>
-        <!--Caixa de texto para por o nome do usuário-->
-        <Entry  
-            x:Name="TXTNome" 
-            Keyboard="Text" 
-            Background="white"
-            VerticalOptions="CenterAndExpand" 
-            ReturnType="Go">
-        </Entry>
-        <!--Botão que permite colocar o nome do user-->
-        <Button  
-            Text="Confirmar" 
-            Clicked="Button_Clicked" 
-            HorizontalOptions="CenterAndExpand"
-            FontAttributes="Bold"
-            CornerRadius="3">
-        </Button>
-        <!--Botão que permite o user e o funcionário ver a fila-->
-        <Button  
-            x:Name="BTN_ROW"
-            Text="Ver Fila" 
-            Clicked="BTN_ROW_Clicked"
-            HorizontalOptions="CenterAndExpand"
-            FontAttributes="Bold"
-            CornerRadius="3">
-        </Button>
-        <!--<ImageButton
-            Source="seta.png" Scale="0.5"
-            BackgroundColor="LightGray" 
-            WidthRequest="500" 
-            HeightRequest="150" 
-            HorizontalOptions="CenterAndExpand">
-        </ImageButton>-->
-
-        <!--Pressed = evento de pressionar botão // Released = soltar botão-->
-        <Button 
-            x:Name="BTNEventTest" 
-            Text="Event"
-            Clicked="BTNEventTest_Pressed"
-            HorizontalOptions="CenterAndExpand"
-            CornerRadius="3"
-            BorderColor="Black">
+    <!-- Guia 1 -->
+    <ContentPage Title="Confirmações">
+        <StackLayout BackgroundColor="Black">
+            <Label Text="Ola, mundo!" 
+                   TextColor="White" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="EndAndExpand"
+                   FontSize="25">
+            </Label>
+            <!--Caixa de texto para por o nome do usuário-->
+            <Entry  
+                x:Name="TXTNome" 
+                Keyboard="Text" 
+                Background="white"
+                VerticalOptions="CenterAndExpand" 
+                ReturnType="Go">
+            </Entry>
+            <!--Botão que permite colocar o nome do usuário-->
+            <Button  
+                Text="Confirmar" 
+                Clicked="Button_Clicked" 
+                HorizontalOptions="CenterAndExpand"
+                FontAttributes="Bold"
+                CornerRadius="3">
             </Button>
-        <Label 
-            x:Name="LbEvent"
-            Text="-"
-            FontSize="Medium"
-            TextColor="Green"
-            HorizontalOptions="CenterAndExpand">
-        </Label>
-               
-    </StackLayout>
-</ContentPage>
-    
+            <!--Botão que permite o usuário e o funcionário ver a fila-->
+            <!--<Button  
+                x:Name="BTN_ROW"
+                Text="Ver Fila" 
+                Clicked="BTN_ROW_Clicked"
+                HorizontalOptions="CenterAndExpand"
+                FontAttributes="Bold"
+                CornerRadius="3">
+            </Button>-->
+            <!--<ImageButton
+                Source="seta.png" Scale="0.5"
+                BackgroundColor="LightGray" 
+                WidthRequest="500" 
+                HeightRequest="150" 
+                HorizontalOptions="CenterAndExpand">
+            </ImageButton>-->
+
+            <!--Pressed = evento de pressionar botão // Released = soltar botão-->
+
+            <Label 
+                x:Name="LbEvent"
+                Text="-"
+                FontSize="Medium"
+                TextColor="Green"
+                HorizontalOptions="CenterAndExpand">
+            </Label>
+        </StackLayout>
+    </ContentPage>
+
+    <!-- Guia 2 (Adicione mais guias conforme necessário) -->
+    <ContentPage Title="Fila">
+        <StackLayout BackgroundColor="Black">
+            <CollectionView x:Name="CVList"
+                            Margin="10"
+                            HorizontalOptions="CenterAndExpand"
+                            ItemsSource="{Binding Clients}">
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="1">
+                            <Label Text="{Binding User}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                
+                            </Label>
+                        </Frame>
+                    </DataTemplate>
+                    
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+            <Label Text="Esta é a guia 2" />
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
+
 
     

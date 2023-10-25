@@ -4,8 +4,23 @@
              x:Class="OrderName.Pages.Row">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-                <Label x:Name="EventTestLABEL" Text=""></Label>
+            <StackLayout>
+                <CollectionView x:Name="CVclientes" Margin="10" HorizontalOptions="CenterAndExpand"
+                                ItemsSource="{Binding Clients}">
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="4">
+                                <Label Text= "{Binding User}" TextColor="Black" VerticalOptions="Center"
+                                       HorizontalOptions="Center">
+                                    
+                                </Label>
+                            </Frame>
+                        </DataTemplate>
+                        
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                    <Label x:Name="EventTestLABEL" Text=""></Label>
                 <Button x:Name="BackButton" Text="Voltar" Clicked="BTNBackButton"></Button>
         </StackLayout>
         </ScrollView>
