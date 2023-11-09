@@ -47,5 +47,22 @@ namespace OrderName.classfiredb
         }
 
 
+        public async Task<bool> deleteClient(string nomeC)
+        {
+
+            try
+            {
+                var locate = (await Client.Child("Clients").OnceAsync<Clients>()).Where(location => location.Object.User == nomeC).FirstOrDefault();
+
+                await Client.Child("Clients").Child(locate.Key).DeleteAsync();
+
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
     }
 }

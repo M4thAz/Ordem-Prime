@@ -44,6 +44,7 @@ namespace OrderName
                     if (criarAcesso)
                     {
                         await DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
+                        LoadList();
                         return;
                     }
                     else
@@ -69,11 +70,47 @@ namespace OrderName
 
         }
 
-
-        private void BTNEventTest_Pressed(object sender, EventArgs e)
+        private async void SWDelete_Invoked(object sender, EventArgs e)
         {
-            LbEvent.Text = "Conexão ok";
+            var search = (sender as SwipeItem)?.BindingContext as Clients;
+            var item = search.User;
+
+            try
+            {
+                var confirm = await DisplayAlert("Aviso", "Tem certeza que quer apagar o cliente " + search.User.ToString() + "?", "Sim", "Não");
+                if(confirm)
+                {
+                    var DeleteService = new FirebaseConnection();
+                    var delete = await DeleteService.deleteClient(item);
+
+                    if (delete)
+                    {
+                        await DisplayAlert("pronto", "contato apagado", "confirmar");
+                        LoadList();
+                        return;
+                    }
+                    else
+                    {
+                        await DisplayAlert("error", "try again", "Confirmar");
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch
+            {
+                 await DisplayAlert("error", "try again", "Confirmar");
+            }
         }
+
+
+        //private void BTNEventTest_Pressed(object sender, EventArgs e)
+        //{
+        //    LbEvent.Text = "Conexão ok";
+        //}
 
         /*/private void BTNEventTest_Pressed(object sender, EventArgs e)
         //{

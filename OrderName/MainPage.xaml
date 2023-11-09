@@ -27,24 +27,6 @@
                 FontAttributes="Bold"
                 CornerRadius="3">
             </Button>
-            <!--Botão que permite o usuário e o funcionário ver a fila-->
-            <!--<Button  
-                x:Name="BTN_ROW"
-                Text="Ver Fila" 
-                Clicked="BTN_ROW_Clicked"
-                HorizontalOptions="CenterAndExpand"
-                FontAttributes="Bold"
-                CornerRadius="3">
-            </Button>-->
-            <!--<ImageButton
-                Source="seta.png" Scale="0.5"
-                BackgroundColor="LightGray" 
-                WidthRequest="500" 
-                HeightRequest="150" 
-                HorizontalOptions="CenterAndExpand">
-            </ImageButton>-->
-
-            <!--Pressed = evento de pressionar botão // Released = soltar botão-->
 
             <Label 
                 x:Name="LbEvent"
@@ -56,7 +38,6 @@
         </StackLayout>
     </ContentPage>
 
-    <!-- Guia 2 (Adicione mais guias conforme necessário) -->
     <ContentPage Title="Fila">
         <StackLayout BackgroundColor="Black">
             <CollectionView x:Name="CVList"
@@ -66,11 +47,18 @@
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
-                        <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="1">
-                            <Label Text="{Binding User}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                
-                            </Label>
-                        </Frame>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem x:Name="SWDelete" Text="Deletar" BackgroundColor="Red" Invoked="SWDelete_Invoked"/>
+                            </SwipeView.RightItems>
+                            <StackLayout Padding="3">
+                                    <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="5">
+                                        <Label Text="{Binding User}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+
+                                        </Label>
+                                    </Frame>
+                                </StackLayout>
+                        </SwipeView>
                     </DataTemplate>
                     
                 </CollectionView.ItemTemplate>
