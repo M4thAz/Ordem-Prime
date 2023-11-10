@@ -67,7 +67,7 @@ namespace OrderName
         {
             //transforma o evento do botão para seguir a outra página
             Navigation.PushAsync(new Pages.Row());
-
+            
         }
 
         private async void SWDelete_Invoked(object sender, EventArgs e)
@@ -77,52 +77,48 @@ namespace OrderName
 
             try
             {
-                var confirm = await DisplayAlert("Aviso", "Tem certeza que quer apagar o cliente " + search.User.ToString() + "?", "Sim", "Não");
-                if(confirm)
-                {
-                    var DeleteService = new FirebaseConnection();
-                    var delete = await DeleteService.deleteClient(item);
 
-                    if (delete)
+                var DeleteService = new FirebaseConnection();
+                var confirm = await DisplayAlert("Aviso", "Tem certeza que quer apagar o cliente " + search.User.ToString() + "?", "Sim", "Não");
+
+                string result = await DisplayPromptAsync("Digite o código para apagar", "", "Confirmar");
+                int code = 4560;
+
+                if (result == code.ToString())
+                {
+                    if (confirm)
                     {
-                        await DisplayAlert("pronto", "contato apagado", "confirmar");
-                        LoadList();
-                        return;
+                        var delete = await DeleteService.DeleteClient(item);
+                        if (delete)
+                        {
+                            await DisplayAlert("pronto", "contato apagado", "confirmar");
+                            LoadList();
+
+                            return;
+                        }
+                        else
+                        {
+                            await DisplayAlert("erro if(delete)", "try again", "Confirmar");
+                            return;
+                        }
                     }
                     else
                     {
-                        await DisplayAlert("error", "try again", "Confirmar");
                         return;
                     }
                 }
                 else
                 {
+                    await DisplayAlert("Código errado!", "Insira novamente o código", "Confirmar");
                     return;
                 }
             }
             catch
             {
-                 await DisplayAlert("error", "try again", "Confirmar");
+                await DisplayAlert("erro catch", "try again", "Confirmar");
             }
         }
 
-
-        //private void BTNEventTest_Pressed(object sender, EventArgs e)
-        //{
-        //    LbEvent.Text = "Conexão ok";
-        //}
-
-        /*/private void BTNEventTest_Pressed(object sender, EventArgs e)
-        //{
-        //    //puxa o evento da label passando um texto enquanto segura o botao
-        //    LbEvent.Text = "Holding!";
-        //}
-
-        private void BTNEventTest_Released(object sender, EventArgs e)
-        {
-            //puxa o evento da label quando o botão é solto
-            LbEvent.Text = "Umpressed";
-        }*/
     }
 
 }

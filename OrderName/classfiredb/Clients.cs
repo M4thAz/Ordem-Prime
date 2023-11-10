@@ -7,6 +7,7 @@ namespace OrderName.classfiredb
     public class Clients
     {
         public string User { get; set; }
+        public int IdClient { get;  set; }
 
     }
 }
