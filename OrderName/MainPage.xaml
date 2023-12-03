@@ -1,66 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="OrderName.MainPage">
-    <!-- Guia 1 -->
-    <ContentPage Title="Confirmações">
-        <StackLayout BackgroundColor="Black">
-            <Label Text="Ola, mundo!" 
-                   TextColor="White" 
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="EndAndExpand"
-                   FontSize="25">
-            </Label>
-            <!--Caixa de texto para por o nome do usuário-->
-            <Entry  
-                x:Name="TXTNome" 
-                Keyboard="Text" 
-                Background="white"
-                VerticalOptions="CenterAndExpand" 
-                ReturnType="Go">
-            </Entry>
-            <!--Botão que permite colocar o nome do usuário-->
-            <Button  
-                Text="Confirmar" 
-                Clicked="Button_Clicked" 
-                HorizontalOptions="CenterAndExpand"
-                FontAttributes="Bold"
-                CornerRadius="3">
-            </Button>
 
-            <Label 
-                x:Name="LbEvent"
-                Text="-"
-                FontSize="Medium"
-                TextColor="Green"
-                HorizontalOptions="CenterAndExpand">
-            </Label>
-        </StackLayout>
+<TabbedPage
+    x:Class="OrderName.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:magic="http://magic.com/schemas/gradients">
+    <!--  Guia 1  -->
+
+    <ContentPage Title="Confirmações" BackgroundColor="Black">
+
+        <Grid
+            Margin="7"
+            Padding="30"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="*,Auto, Auto, *"
+            RowSpacing="30"
+            VerticalOptions="FillAndExpand">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="0" Color="white" />
+                    <GradientStop Offset="1" Color="Black" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+
+            <Image
+                Grid.Row="0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Source="barbers.png"
+                VerticalOptions="FillAndExpand" />
+            <Frame
+                Grid.Row="1"
+                BackgroundColor="Transparent"
+                BorderColor="Black"
+                CornerRadius="5">
+                <Label
+                    FontSize="25"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Ola, seja bem vindo!"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </Frame>
+            <!--  Caixa de texto para por o nome do usuário  -->
+
+            <Entry
+                x:Name="TXTNome"
+                Grid.Row="3"
+                Margin="10"
+                Background="lightgray"
+                Keyboard="Text"
+                Placeholder="Insira seu nome"
+                ReturnType="Go"
+                VerticalOptions="CenterAndExpand" />
+
+            <!--  Botão que permite colocar o nome do usuário  -->
+            <Button
+                Grid.Row="4"
+                Margin="20"
+                Clicked="Button_Clicked"
+                CornerRadius="3"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                Text="Confirmar"
+                VerticalOptions="StartAndExpand" />
+
+
+        </Grid>
     </ContentPage>
 
     <ContentPage Title="Fila">
         <StackLayout BackgroundColor="Black">
-            <CollectionView x:Name="CVList"
-                            Margin="10"
-                            HorizontalOptions="CenterAndExpand"
-                            ItemsSource="{Binding Clients}">
+            <CollectionView
+                x:Name="CVList"
+                Margin="10"
+                HorizontalOptions="CenterAndExpand"
+                ItemsSource="{Binding Clients}">
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
                         <SwipeView>
                             <SwipeView.RightItems>
-                                <SwipeItem x:Name="SWDelete" Text="Deletar" BackgroundColor="Red" Invoked="SWDelete_Invoked"/>
+                                <SwipeItem
+                                    x:Name="SWDelete"
+                                    BackgroundColor="Red"
+                                    Invoked="SWDelete_Invoked"
+                                    Text="Deletar" />
                             </SwipeView.RightItems>
-                            <StackLayout Padding="3">
-                                    <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="5">
-                                        <Label Text="{Binding User}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
 
-                                        </Label>
-                                    </Frame>
-                                </StackLayout>
+                            <StackLayout Padding="3">
+                                <Frame
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Black"
+                                    CornerRadius="5">
+
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding User}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                </Frame>
+                            </StackLayout>
                         </SwipeView>
                     </DataTemplate>
-                    
+
                 </CollectionView.ItemTemplate>
 
             </CollectionView>
@@ -70,4 +115,3 @@
 </TabbedPage>
 
 
-    

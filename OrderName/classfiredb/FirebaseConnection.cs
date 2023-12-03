@@ -19,10 +19,10 @@ namespace OrderName.classfiredb
         {
             try
             {
-               //client.Child serve para fazer a localização da tabela na base de dados que foi linkada ao Client;
+                //client.Child serve para fazer a localização da tabela na base de dados que foi linkada ao Client;
                 await Client.Child("Clients").PostAsync(new Clients()
                 {
-                    User = username,
+                    User = username
                 });
 
                 return true;
@@ -43,7 +43,6 @@ namespace OrderName.classfiredb
             {
                 User = receptor.Object.User
             }).ToList();
-            listagemClientes.Reverse();
             return listagemClientes;
         }
 
