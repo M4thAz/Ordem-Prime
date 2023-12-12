@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Google.Protobuf;
+using Org.BouncyCastle.Crypto;
 
 namespace OrderName.classfiredb
 {
-    public  class FirebaseConnection
+    public class FirebaseConnection
     {
         public static string passFirebase = "TdZfDbN7JPOUpsHEiE4M3JtTXdA0JnF17m4oHTHv";
-        FirebaseClient Client = new FirebaseClient("https://ordername-2e429-default-rtdb.europe-west1.firebasedatabase.app/", 
-        new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(passFirebase)});
+        FirebaseClient Client = new FirebaseClient("https://ordername-2e429-default-rtdb.europe-west1.firebasedatabase.app/",
+        new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(passFirebase) });
 
         public async Task<bool> RegisterUser(string username)
         {
@@ -26,7 +27,7 @@ namespace OrderName.classfiredb
                 });
 
                 return true;
-                
+
             }
             catch
             {
@@ -58,11 +59,28 @@ namespace OrderName.classfiredb
 
                 return true;
             }
-            catch 
+            catch
             {
                 return false;
             }
         }
 
+        public async Task<bool> DeleteAllClients()
+        {
+            try
+            {
+                var locateClients = (await Client.Child("Clients").OnceAsync<Clients>());
+
+                await Client.Child("Clients").DeleteAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        }
+
     }
-}
+

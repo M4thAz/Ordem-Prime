@@ -48,11 +48,12 @@
 
             <Entry
                 x:Name="TXTNome"
+                TextColor="White"
                 Grid.Row="3"
                 Margin="10"
-                Background="lightgray"
                 Keyboard="Text"
                 Placeholder="Insira seu nome"
+                PlaceholderColor="White"
                 ReturnType="Go"
                 VerticalOptions="CenterAndExpand" />
 
@@ -73,6 +74,18 @@
 
     <ContentPage Title="Fila">
         <StackLayout BackgroundColor="Black">
+
+            <Label Text="Esta é a guia 2"
+                   TextColor="Green"/>
+
+            <Button x:Name="deleteAll"
+                    CornerRadius="3"
+                    Margin="20"
+                    Clicked="deleteAll_Clicked"
+                    Text="Delete all">
+                
+            </Button>
+
             <CollectionView
                 x:Name="CVList"
                 Margin="10"
@@ -109,8 +122,9 @@
                 </CollectionView.ItemTemplate>
 
             </CollectionView>
-            <Label Text="Esta é a guia 2" />
+
         </StackLayout>
+
     </ContentPage>
 </TabbedPage>
 

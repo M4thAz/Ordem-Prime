@@ -2,6 +2,7 @@
 using Microsoft.Win32.SafeHandles;
 using OrderName.classfiredb;
 using OrderName.Pages;
+using Org.BouncyCastle.Tls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,6 +121,25 @@ namespace OrderName
             }
         }
 
+        private async void deleteAll_Clicked(object sender, EventArgs e)
+        {
+            var seeItem = (sender as SwipeItem)?.BindingContext as Clients;
+            var item = seeItem.User;
+
+            try
+            {
+                var DeleteService = new FirebaseConnection();
+                var delete = await DeleteService.DeleteAllClients();
+                if (delete)
+                {
+                    await DisplayAlert("apagado", "", "");
+
+                }
+            }catch
+            {
+                
+            }
+        }
     }
 
 }
