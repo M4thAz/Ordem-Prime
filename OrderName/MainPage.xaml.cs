@@ -48,6 +48,7 @@ namespace OrderName
                     if (criarAcesso)
                     {
                         await DisplayAlert("Seja bem vindo! ", "Aguarde ser chamado " + TXTNome.Text + "!", "Confirmar");
+                        TXTNome.Text = string.Empty;
                         LoadList();
                         return;
                     }
@@ -98,7 +99,7 @@ namespace OrderName
                         }
                         else
                         {
-                            await DisplayAlert("erro if(delete)", "try again", "Confirmar");
+                            await DisplayAlert("erro", "try again", "Confirmar");
                             return;
                         }
                     }
@@ -107,7 +108,6 @@ namespace OrderName
                         return;
                     }
                 
-            
             }
             catch
             {
@@ -121,21 +121,35 @@ namespace OrderName
             var DeleteService = new FirebaseConnection();
             try
             {
+                bool confirmDelete = await DisplayAlert("Você tem certeza que deseja apagar todos os clientes?", "Essa ação é irreversível!", "Sim", "Não");
 
-                string accept = "sim";
-                await DisplayAlert("Você tem certeza que deseja apagar todos os clientes?", "Essa ação é irreversível!", accept);
+                if (!confirmDelete)
+                {
+                    return;
+                }
+
                 string result = await DisplayPromptAsync("Digite o código para apagar", "", "Confirmar");
                 int code = 4560;
 
-                
+
                 if (result == code.ToString())
-                { 
+                {
                     var delete = await DeleteService.DeleteAllClients();
                     if (delete)
                     {
                         await DisplayAlert("Sucesso", "Todos os clientes foram apagados.", "OK");
                         LoadList();
+                        return;
                     }
+                    else
+                    {
+                        await DisplayAlert("erro", "try again", "Confirmar");
+                        return;
+                    }
+                }
+                else if (result == null)
+                {
+                    return;
                 }
                 else
                 {

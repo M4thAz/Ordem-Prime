@@ -75,9 +75,6 @@
     <ContentPage Title="Fila">
         <StackLayout BackgroundColor="Black">
 
-            <Label Text="Esta é a guia 2"
-                   TextColor="Green"/>
-
             <Button x:Name="deleteAll"
                     CornerRadius="3"
                     Margin="20"
