@@ -9,18 +9,18 @@ using Xamarin.Forms.Xaml;
 
 namespace OrderName.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Row : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Row : ContentPage
+    {
 
-		public Row ()
-		{
-			InitializeComponent ();
-		}
+        public Row()
+        {
+            InitializeComponent();
+        }
 
-		private void BTNBackButton(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new MainPage());
-	    }
-	}
+        private void BTNBackButton(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+    }
 }

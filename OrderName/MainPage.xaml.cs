@@ -2,6 +2,7 @@
 using Microsoft.Win32.SafeHandles;
 using OrderName.classfiredb;
 using OrderName.Pages;
+using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Tls;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ namespace OrderName
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(TXTNome.Text)) {
+                if (!string.IsNullOrWhiteSpace(TXTNome.Text))
+                {
 
                     var acessoCliente = new FirebaseConnection();
                     bool criarAcesso = await acessoCliente.RegisterUser(TXTNome.Text);
@@ -54,7 +56,8 @@ namespace OrderName
                         await DisplayAlert("Falha!", "a conexão não está funcionando", "verifique com o administrador!");
                     }
                 }
-                else {
+                else
+                {
 
                     await DisplayAlert("Campo vazio!", "Digite seu nome por favor!", "Confirmar");
                 }
@@ -69,7 +72,7 @@ namespace OrderName
         {
             //transforma o evento do botão para seguir a outra página
             Navigation.PushAsync(new Pages.Row());
-            
+
         }
 
         private async void SWDelete_Invoked(object sender, EventArgs e)
@@ -83,11 +86,6 @@ namespace OrderName
                 var DeleteService = new FirebaseConnection();
                 var confirm = await DisplayAlert("Aviso", "Tem certeza que quer apagar o cliente " + search.User.ToString() + "?", "Sim", "Não");
 
-                string result = await DisplayPromptAsync("Digite o código para apagar", "", "Confirmar");
-                int code = 4560;
-
-                if (result == code.ToString())
-                {
                     if (confirm)
                     {
                         var delete = await DeleteService.DeleteClient(item);
@@ -108,12 +106,8 @@ namespace OrderName
                     {
                         return;
                     }
-                }
-                else
-                {
-                    await DisplayAlert("Código errado!", "Insira novamente o código", "Confirmar");
-                    return;
-                }
+                
+            
             }
             catch
             {
@@ -121,25 +115,38 @@ namespace OrderName
             }
         }
 
-        private async void deleteAll_Clicked(object sender, EventArgs e)
+        private async void DeleteAll_Clicked(object sender, EventArgs e)
         {
-            var seeItem = (sender as SwipeItem)?.BindingContext as Clients;
-            var item = seeItem.User;
 
+            var DeleteService = new FirebaseConnection();
             try
             {
-                var DeleteService = new FirebaseConnection();
-                var delete = await DeleteService.DeleteAllClients();
-                if (delete)
-                {
-                    await DisplayAlert("apagado", "", "");
 
-                }
-            }catch
-            {
+                string accept = "sim";
+                await DisplayAlert("Você tem certeza que deseja apagar todos os clientes?", "Essa ação é irreversível!", accept);
+                string result = await DisplayPromptAsync("Digite o código para apagar", "", "Confirmar");
+                int code = 4560;
+
                 
+                if (result == code.ToString())
+                { 
+                    var delete = await DeleteService.DeleteAllClients();
+                    if (delete)
+                    {
+                        await DisplayAlert("Sucesso", "Todos os clientes foram apagados.", "OK");
+                        LoadList();
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Código errado!", "Por favor, Insira o código novamente.", "ok");
+                }
             }
+            catch
+            {
+                await DisplayAlert("Erro", "Ocorreu um erro ao apagar os clientes.", "OK");
+            }
+            
         }
     }
-
 }

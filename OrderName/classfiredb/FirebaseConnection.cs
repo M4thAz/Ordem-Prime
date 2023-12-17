@@ -71,7 +71,13 @@ namespace OrderName.classfiredb
             {
                 var locateClients = (await Client.Child("Clients").OnceAsync<Clients>());
 
-                await Client.Child("Clients").DeleteAsync();
+                if (locateClients != null)
+                {
+                    foreach (var clientSnapshot in locateClients)
+                    {
+                        await Client.Child("Clients").Child(clientSnapshot.Key).DeleteAsync();
+                    }
+                }
                 return true;
             }
             catch
@@ -80,7 +86,7 @@ namespace OrderName.classfiredb
             }
         }
 
-        }
-
     }
+
+}
 

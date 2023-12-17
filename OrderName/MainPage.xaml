@@ -81,7 +81,7 @@
             <Button x:Name="deleteAll"
                     CornerRadius="3"
                     Margin="20"
-                    Clicked="deleteAll_Clicked"
+                    Clicked="DeleteAll_Clicked"
                     Text="Delete all">
                 
             </Button>
