@@ -12,8 +12,9 @@ namespace OrderName.classfiredb
 {
     public class FirebaseConnection
     {
-        public static string passFirebase = "TdZfDbN7JPOUpsHEiE4M3JtTXdA0JnF17m4oHTHv";
-        FirebaseClient Client = new FirebaseClient("https://ordername-2e429-default-rtdb.europe-west1.firebasedatabase.app/",
+        //Insira aqui seus acessos ao firebase realtime
+        public static string passFirebase = "senha firebase realtime";
+        FirebaseClient Client = new FirebaseClient("link de conexão da base de dados",
         new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(passFirebase) });
 
         public async Task<bool> RegisterUser(string username)
@@ -37,7 +38,7 @@ namespace OrderName.classfiredb
 
         public async Task<List<Clients>> ListaClientes()
         {
-            //código que buscar os dados da DB e manda para a fila da aplicação
+            //código que busca os dados da DB e manda para a fila da aplicação
             //client.child = conexão da base de dados dessa pastaa que busca a classe Clients da classfiredb
             //onceasync em diante puxa os dados da tabela "user" e o transforma em lista.
             var listagemClientes = (await Client.Child("Clients").OnceAsync<Clients>()).Select(receptor => new Clients()
