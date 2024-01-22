@@ -2,6 +2,7 @@
 
 <font size="+1">
 Ordem prime é um aplicativo android desenvolvido em C# utilizando Xamarin Forms para simplificar a gestão de filas em barbearias. Ele permite que os clientes marquem sua ordem de chegada no estabelecimento de forma rápida e eficiente.
+O app recebe os dados do cliente e armazena em um site onde mostra a ordem de chegada do cliente, o site está em outro projeto nomeado de "Ordem-Prime Website"
 </font>
 
 ## Funcionalidades Principais
