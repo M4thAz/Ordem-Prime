@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace OrderName.Droid
 {
+    //tela de load do app
     [Activity(Label = "ActiveLoadScreen", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class ActiveLoadScreen : Activity
     {
